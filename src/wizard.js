@@ -52,7 +52,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                 if (angular.isUndefined(editMode) || editMode == null) return;
 
                 if (editMode) {
-                    _.each($scope.getEnabledSteps(), function(step) {
+                    angular.forEach($scope.getEnabledSteps(), function(step) {
                         step.completed = true;
                     });
                 }
@@ -190,7 +190,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             //unSelect All Steps
             function unselectAll() {
                 //traverse steps array and set each "selected" property to false
-                _.each($scope.getEnabledSteps(), function (step) {
+                angular.forEach($scope.getEnabledSteps(), function (step) {
                     step.selected = false;
                 });
                 //set selectedStep variable to null
