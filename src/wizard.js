@@ -72,7 +72,15 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             this.context = $scope.context;
 
             var getStepWithTitle = function(collection, title) {
-                return null;
+                var l = collection.length;
+                var step;
+                for (var i = 0; i < l; i++) {
+                    step = collection[i];
+                    if (step.title === title) {
+                        return step;
+                    }
+                } 
+                return undefined;
             };
 
             var getIndex = function(collection, value) {
