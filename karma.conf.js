@@ -59,8 +59,8 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Chrome', 'Firefox'],
-
+    browsers: ['PhantomJS'],
+    plugins: ['karma-phantomjs-launcher', 'karma-jasmine'],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
@@ -73,7 +73,7 @@ module.exports = function(config) {
   };
 
   if (process.env.TRAVIS) {
-    configuration.browsers = ['Firefox', 'PhantomJS'];
+    configuration.browsers = ['PhantomJS'];
   }
 
   config.set(configuration);

@@ -1,14 +1,14 @@
 {
   "name": "angular-wizard",
-  "description": "Easy to use Wizard library for AngularJS",
+  "description": "A fork of mgonto's angular-wizard directive, without the lodash dependency",
   "version": "0.5.5",
   "filename": "angular-wizard.min.js",
   "main": "./dist/angular-wizard.min.js",
-  "homepage": "https://github.com/mgonto/angular-wizard",
+  "homepage": "https://github.com/mcorrand/angular-wizard",
   "author": "Martin Gontovnikas <martin@gon.to>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mgonto/angular-wizard.git"
+    "url": "git://github.com/mcorrand/angular-wizard.git"
   },
   "engines": {
     "node": ">= 0.9"
@@ -23,8 +23,8 @@
   ],
   "maintainers": [
     {
-      "name": "Martin Gontovnikas",
-      "website": "http://gon.to/"
+      "name": "Matthieu Corrand",
+      "website": "mattcorrand.com"
     }
   ],
   "dependencies": {},
@@ -46,8 +46,6 @@
     "grunt-ng-annotate": "^0.6.0",
     "grunt-zip": "*",
     "jasmine-core": "^2.1.3",
-    "karma-chrome-launcher": "^0.1.7",
-    "karma-firefox-launcher": "~0.1.x",
     "karma-jasmine": "~0.3.x",
     "karma-phantomjs-launcher": "~0.1.x"
   },
