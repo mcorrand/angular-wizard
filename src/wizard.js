@@ -40,7 +40,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                 var stepTitle = $scope.selectedStep.title || $scope.selectedStep.wzTitle;
                 if ($scope.selectedStep && stepTitle !== $scope.currentStep) {
                     //invoking goTo() with step title as argument
-                    $scope.goTo(_.findWhere($scope.getEnabledSteps(), {title: $scope.currentStep}));
+                    $scope.goTo(getStepWithTitle($scope.getEnabledSteps(), $scope.currentStep));
                 }
 
             });
@@ -70,6 +70,10 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             };
 
             this.context = $scope.context;
+
+            var getStepWithTitle = function(collection, title) {
+                return null;
+            };
 
             var getIndex = function(collection, value) {
                 return collection.indexOf(value);
@@ -248,7 +252,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     stepTo = enabledSteps[step];
                 } else {
                     //finding the step associated with the title entered as goTo argument
-                    stepTo = _.findWhere(enabledSteps, {title: step});
+                    stepTo = getStepWithTitle(enabledSteps, step);
                 }
                 //going to step
                 $scope.goTo(stepTo);
