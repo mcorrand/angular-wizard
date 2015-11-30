@@ -211,7 +211,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             this.next = function(callback) {
                 var enabledSteps = $scope.getEnabledSteps();
                 //setting variable equal to step  you were on when next() was invoked
-                var index = _.indexOf(enabledSteps, $scope.selectedStep);
+                var index = getIndex(enabledSteps, $scope.selectedStep);
                 //checking to see if callback is a function
                 if(angular.isFunction(callback)){
                    if(callback()){
