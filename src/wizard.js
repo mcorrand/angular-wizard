@@ -49,7 +49,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             //if edit mode is truthy, then all steps are marked as completed
             $scope.$watch('[editMode, steps.length]', function() {
                 var editMode = $scope.editMode;
-                if (_.isUndefined(editMode) || _.isNull(editMode)) return;
+                if (angular.isUndefined(editMode) || editMode == null) return;
 
                 if (editMode) {
                     _.each($scope.getEnabledSteps(), function(step) {
@@ -82,7 +82,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     unselectAll();
                     $scope.selectedStep = step;
                     //making sure current step is not undefined
-                    if (!_.isUndefined($scope.currentStep)) {
+                    if (!angular.isUndefined($scope.currentStep)) {
                         $scope.currentStep = step.title || step.wzTitle;
                     }
                     //setting selected step to argument passed into goTo()
@@ -109,7 +109,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                             //$log.log('value for canExit argument: ', $scope.currentStep.canexit);
                             $scope.selectedStep = step;
                             //making sure current step is not undefined
-                            if(!_.isUndefined($scope.currentStep)){
+                            if(!angular.isUndefined($scope.currentStep)){
                                 $scope.currentStep = step.title || step.wzTitle;
                             }
                             //setting selected step to argument passed into goTo()
@@ -236,7 +236,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                 var enabledSteps = $scope.getEnabledSteps();
                 var stepTo;
                 //checking that step is a Number
-                if (_.isNumber(step)) {
+                if (angular.isNumber(step)) {
                     stepTo = enabledSteps[step];
                 } else {
                     //finding the step associated with the title entered as goTo argument
