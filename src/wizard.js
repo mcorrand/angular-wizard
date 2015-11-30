@@ -71,8 +71,16 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
 
             this.context = $scope.context;
 
+            var getIndex = function(collection, value) {
+                return 0;
+            };
+
+            var getStepIndex = function(step) {
+                return getIndex($scope.getEnabledSteps(), step);
+            };
+
             $scope.getStepNumber = function(step) {
-                return _.indexOf($scope.getEnabledSteps(), step) + 1;
+                return getStepIndex(step) + 1;
             };
 
             $scope.goTo = function(step) {
@@ -88,7 +96,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     //setting selected step to argument passed into goTo()
                     step.selected = true;
                     //emit event upwards with data on goTo() invoktion
-                    $scope.$emit('wizard:stepChanged', {step: step, index: _.indexOf($scope.getEnabledSteps() , step)});
+                    $scope.$emit('wizard:stepChanged', {step: step, index: getStepIndex(step)});
                     //setting variable to false so all other step changes must pass validation
                     firstRun = false;
                 } else {
@@ -115,7 +123,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                             //setting selected step to argument passed into goTo()
                             step.selected = true;
                             //emit event upwards with data on goTo() invoktion
-                            $scope.$emit('wizard:stepChanged', {step: step, index: _.indexOf($scope.getEnabledSteps(), step)});
+                            $scope.$emit('wizard:stepChanged', {step: step, index: getStepIndex(step)});
                             //$log.log('current step number: ', $scope.currentStepNumber());
                         }
                     });
@@ -170,7 +178,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
 
             $scope.currentStepNumber = function() {
                 //retreive current step number
-                return _.indexOf($scope.getEnabledSteps() , $scope.selectedStep) + 1;
+                return $scope.getStepNumber($scope.selectedStep);
             };
 
             $scope.getEnabledSteps = function() {
@@ -256,7 +264,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             
             this.previous = function() {
                 //getting index of current step
-                var index = _.indexOf($scope.getEnabledSteps() , $scope.selectedStep);
+                var index = getStepIndex($scope.selectedStep);
                 //ensuring you aren't trying to go back from the first step
                 if (index === 0) {
                     throw new Error("Can't go back. It's already in step 0");
@@ -269,7 +277,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             //cancel is alias for previous.
             this.cancel = function() {
                 //getting index of current step
-                var index = _.indexOf($scope.getEnabledSteps() , $scope.selectedStep);
+                var index = getStepIndex($scope.selectedStep);
                 //ensuring you aren't trying to go back from the first step
                 if (index === 0) {
                     throw new Error("Can't go back. It's already in step 0");
