@@ -174,7 +174,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
             };
 
             $scope.getEnabledSteps = function() {
-                return _.filter($scope.steps, function(step){
+                return $scope.steps.filter(function(step){
                     return step.disabled !== 'true';
                 });
             };
