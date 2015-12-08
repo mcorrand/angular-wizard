@@ -162,7 +162,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     });
                     return defer.promise;
                 }
-                return step.canenter($scope.context) === true;
+                return canEnter === true;
             }
 
             function canExitStep(step, stepTo) {
@@ -185,7 +185,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     });
                     return defer.promise;
                 }
-                return step.canexit($scope.context) === true;
+                return canExit === true;
             }
 
             $scope.currentStepNumber = function() {

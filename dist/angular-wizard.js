@@ -1,6 +1,6 @@
 /**
  * A fork of mgonto's angular-wizard directive, without the lodash dependency
- * @version v0.5.6 - 2015-11-30 * @link https://github.com/mcorrand/angular-wizard
+ * @version v0.5.7 - 2015-12-08 * @link https://github.com/mcorrand/angular-wizard
  * @author Martin Gontovnikas <martin@gon.to>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -214,7 +214,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     });
                     return defer.promise;
                 }
-                return step.canenter($scope.context) === true;
+                return canEnter === true;
             }
 
             function canExitStep(step, stepTo) {
@@ -237,7 +237,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     });
                     return defer.promise;
                 }
-                return step.canexit($scope.context) === true;
+                return canExit === true;
             }
 
             $scope.currentStepNumber = function() {
