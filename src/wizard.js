@@ -298,6 +298,13 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     $scope.goTo($scope.getEnabledSteps()[0]);
                 }
             };
+
+            // reset completion; useful when the same wizard is used several times in a row.
+            this.reset = function() {
+                angular.forEach($scope.steps, function(step) {
+                    step.completed = false;
+                });
+            };
         }]
     };
 });
