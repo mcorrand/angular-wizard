@@ -1,6 +1,6 @@
 /**
  * A fork of mgonto's angular-wizard directive, without the lodash dependency
- * @version v0.5.8 - 2015-12-11 * @link https://github.com/mcorrand/angular-wizard
+ * @version v0.5.9 - 2015-12-21 * @link https://github.com/mcorrand/angular-wizard
  * @author Martin Gontovnikas <martin@gon.to>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -106,6 +106,11 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                 if (editMode) {
                     angular.forEach($scope.getEnabledSteps(), function(step) {
                         step.completed = true;
+                    });
+                }
+                else {
+                    angular.forEach($scope.getEnabledSteps(), function(step) {
+                        step.completed = false;
                     });
                 }
             }, true);
@@ -353,6 +358,9 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
 
             // reset completion; useful when the same wizard is used several times in a row.
             this.reset = function() {
+                if ($scope.editMode === true) {
+                    return;
+                }
                 angular.forEach($scope.steps, function(step) {
                     step.completed = false;
                 });

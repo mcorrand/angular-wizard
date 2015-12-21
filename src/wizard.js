@@ -56,6 +56,11 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                         step.completed = true;
                     });
                 }
+                else {
+                    angular.forEach($scope.getEnabledSteps(), function(step) {
+                        step.completed = false;
+                    });
+                }
             }, true);
 
             //called each time step directive is loaded
@@ -301,6 +306,9 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
 
             // reset completion; useful when the same wizard is used several times in a row.
             this.reset = function() {
+                if ($scope.editMode === true) {
+                    return;
+                }
                 angular.forEach($scope.steps, function(step) {
                     step.completed = false;
                 });
