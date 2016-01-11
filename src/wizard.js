@@ -57,7 +57,7 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                     });
                 }
                 else {
-                    angular.forEach($scope.getEnabledSteps(), function(step) {
+                    angular.forEach($scope.steps, function(step) {
                         step.completed = false;
                     });
                 }
