@@ -1,6 +1,6 @@
 /**
  * A fork of mgonto's angular-wizard directive, without the lodash dependency
- * @version v0.5.10 - 2016-01-11 * @link https://github.com/mcorrand/angular-wizard
+ * @version v0.5.11 - 2016-01-12 * @link https://github.com/mcorrand/angular-wizard
  * @author Martin Gontovnikas <martin@gon.to>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -364,6 +364,10 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                 angular.forEach($scope.steps, function(step) {
                     step.completed = false;
                 });
+                try{
+                    this.cancel();
+                }
+                catch(err){}
             };
         }]
     };

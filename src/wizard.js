@@ -312,6 +312,10 @@ angular.module('mgo-angular-wizard').directive('wizard', function() {
                 angular.forEach($scope.steps, function(step) {
                     step.completed = false;
                 });
+                try{
+                    this.cancel();
+                }
+                catch(err){}
             };
         }]
     };
